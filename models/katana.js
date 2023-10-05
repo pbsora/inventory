@@ -15,7 +15,7 @@ const KatanaSchema = new Schema({
 });
 
 KatanaSchema.virtual("url").get(function () {
-  return `/catalog/katana/${this.id}`;
+  return `/katana/${this.id}`;
 });
 
 module.exports = mongoose.model("Katana", KatanaSchema);
