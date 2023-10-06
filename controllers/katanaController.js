@@ -1,9 +1,14 @@
 const express = require("express");
-const Katana = require("../models/katana");
 const asyncHandler = require("express-async-handler");
 
+const Katana = require("../models/katana");
+const Category = require("../models/category");
+
 exports.katana_list = asyncHandler(async (req, res, next) => {
-  const allKatana = await Katana.find();
+  const allKatana = await Katana.find()
+    .populate("category")
+    .sort({ category: -1 })
+    .exec();
 
   res.render("index", { katanas: allKatana });
 });
@@ -20,4 +25,11 @@ exports.katana_detail = asyncHandler(async (req, res, next) => {
   }
 
   res.render("katana_detail", { katana: katana });
+});
+
+exports.katana_new = asyncHandler(async (req, res, next) => {
+  const categories = await Category.find().exec();
+  console.log(categories);
+
+  res.render("katana_new", { categories: categories });
 });

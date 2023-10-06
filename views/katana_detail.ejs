@@ -12,21 +12,46 @@
       rel="stylesheet"
     />
   </head>
-  <body>
-    <nav class="bg-black text-white text-[3rem] p-3 font-satisfy text-center">
+  <body class="flex flex-col gap-10">
+    <nav
+      class="bg-black text-white text-[3rem] p-3 font-satisfy text-center w-screen"
+    >
       <div><a href="/">Katana Kaji</a></div>
     </nav>
-    <main
-      class="flex items-start justify-center h-screen border-2 border-red-500"
-    >
-      <div id="image">
-        <img
-          src="<%= katana.imageUrl %>"
-          alt="katana"
-          class="m-3 rounded w-[30vw] md:h-auto"
-        />
+    <main>
+      <div
+        class="flex flex-col md:flex-row items-center md:items-start justify-center md:w-[70vw] m-auto gap-10 mb-20 font-inter"
+      >
+        <div id="image" class="">
+          <img
+            src="<%= katana.imageUrl %>"
+            alt="katana"
+            class="max-w-[90vw] md:max-w-[30rem] lg:max-w-[40rem] rounded-xl shadow-2xl"
+          />
+        </div>
+        <div id="info" class="px-9">
+          <div
+            class="w-[80vw] md:w-[30vw] flex flex-col mt-5 gap-10 border-b-2 border-black pb-8"
+          >
+            <p class="text-2xl"><%= katana.name %></p>
+            <p class="text-xl">$<%= katana.price %>.00 USD</p>
+            <a href="<%= katana.category.url %>">asd</a>
+          </div>
+          <div id="desc" class="max-w-[25rem] mt-9">
+            <p class="mb-4 text-3xl">Description</p>
+            <p class="text-lg"><%= katana.description %></p>
+            <p class="mt-6 mb-6 text-3xl">In-Stock:</p>
+            <span class="px-5 py-3 text-2xl border-2 border-black"
+              ><%= katana.inStock %></span
+            >
+          </div>
+          <button
+            class="px-12 py-3 mt-12 text-xl border-2 border-black hover:bg-zinc-300"
+          >
+            Purchase
+          </button>
+        </div>
       </div>
-      <div id="info w-[30vw]">asd</div>
     </main>
   </body>
 </html>
