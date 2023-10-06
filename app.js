@@ -5,7 +5,7 @@ var cookieParser = require("cookie-parser");
 var logger = require("morgan");
 
 let indexRouter = require("./routes/index");
-let categoryRouter = require("./routes/category");
+
 let katanaRouter = require("./routes/katana");
 
 require("dotenv").config();
@@ -31,7 +31,6 @@ app.use(cookieParser());
 app.use(express.static(path.join(__dirname, "public")));
 
 app.use("/", indexRouter);
-app.use("/category", categoryRouter);
 app.use("/katana", katanaRouter);
 
 // catch 404 and forward to error handler

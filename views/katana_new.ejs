@@ -17,50 +17,104 @@
       <div><a href="/">Katana Kaji</a></div>
     </nav>
     <main>
-      <div
-        class="w-[100vw] gap-3 md:w-[60vw] bg-gray-100 m-auto mb-3 md:rounded-xl shadow-2xl p-6 md:mt-6 md:mb-12 font-inter flex flex-col justify-center items-center"
+      <form
+        action=""
+        method="post"
+        class="w-[100vw] gap-3 md:w-[60vw] md:bg-gray-100 m-auto mb-3 md:rounded-xl md:shadow-2xl p-6 md:mt-6 md:mb-12 font-inter flex flex-col justify-center items-center"
       >
-        <div id="name " class="flex flex-col">
-          <label for="name" class="mb-3 text-xl">Name of the Katana:</label>
+        <div id="name" class="">
+          <label for="name" class="block mb-3 text-xl"
+            >Name of the Katana:</label
+          >
           <input
             type="text"
             name="name"
             placeholder="Eg: JAPANESE HOKKAIDO OAK BOKUTO "
-            class="h-10 border border-black rounded-lg w-[50rem] pl-6"
+            class="w-[90vw] md:w-[55vw] h-10 pl-6 border border-black rounded-lg focus:border-blue-500"
+            required
           />
         </div>
-        <div id="desc" class="flex flex-col">
-          <label for="name" class="mb-3 text-xl">Description:</label>
+        <div id="desc" class="">
+          <label for="name" class="block mb-3 text-xl">Description:</label>
           <textarea
             name="description"
             id="description"
             cols="30"
             rows="5"
-            class="w-[50rem] border border-black rounded-lg p-3"
+            required
+            class="w-[90vw] md:w-[55vw] border border-black rounded-lg p-3"
             placeholder="Eg: Not only is it robust, durable, and water-resistant, but the beauty and elegance of the oak, which is neither too heavy nor too light, makes it the ideal wood for wooden swords for kendo and other martial arts, swinging, and kata practice."
           ></textarea>
         </div>
-        <div id="image" class="flex flex-col">
-          <label for="name" class="mb-3 text-xl">Image URL:</label>
+        <div id="image" class="">
+          <label for="name" class="block mb-3 text-xl">Image URL:</label>
           <input
             type="text"
             name="image"
             placeholder="URL"
-            class="h-10 border border-black rounded-lg w-[50rem] pl-6"
+            class="h-10 border border-black rounded-lg w-[90vw] md:w-[55vw] pl-6"
           />
+        </div>
+        <div class="flex gap-2">
+          <div class="">
+            <label for="category" class="items-start block mb-2 text-xl"
+              >Category</label
+            >
+            <select
+              name="category"
+              id="category"
+              class="p-3 w-[45vw] md:w-[27vw] border border-gray-500 rounded-lg focus:ring-blue-500 focus:border-blue-500"
+            >
+              <% categories.forEach(category => { %>
+              <option value="<%= category.name %>"><%= category.name %></option>
+              <% }) %>
+            </select>
+          </div>
+          <div class="">
+            <label for="stock" class="items-start block mb-2 text-xl"
+              >In-Stock</label
+            >
+            <select
+              name="stock"
+              id="stock"
+              class="p-3 w-[45vw] md:w-[27vw] border border-gray-500 rounded-lg focus:ring-blue-500 focus:border-blue-500"
+            >
+              <option value="1">1</option>
+              <option value="2">2</option>
+              <option value="3">3</option>
+              <option value="4">4</option>
+              <option value="5">5</option>
+              <option value="6">6</option>
+              <option value="7">7</option>
+              <option value="8">8</option>
+              <option value="9">9</option>
+              <option value="10">10</option>
+            </select>
+          </div>
+        </div>
+        <div id="price " class="">
+          <label for="price" class="block mb-3 text-xl">Price:</label>
           <input
-          class="block p-3 text-sm text-gray-900 border border-gray-300 rounded-lg cursor-pointer bg-gray-50 dark:text-gray-400 focus:outline-none dark:bg-gray-700 dark:border-gray-600 dark:placeholder-gray-400 w-[50rem]"
-          id="file_input"
-          type="file"
-        />
+            type="number"
+            name="price"
+            placeholder="Eg: 669"
+            class="w-[90vw] md:w-[55vw] h-10 pl-6 border border-black rounded-lg"
+            required
+          />
         </div>
-         <select name="" id="">
-            <% categories.forEach(category => { %>
-             <option value="<%= category.name %>"><%= category.name %></option>
-            <% }) %>
-         </select>
-        </div>
-      </div>
+        <button
+          type="submit"
+          class="block text-white bg-black border-white rounded-xl w-[90vw] md:w-[55vw] px-6 py-3 mt-6"
+        >
+          Submit
+        </button>
+      </form>
     </main>
   </body>
 </html>
+
+<!-- <input
+  class="w-[27vw] p-3 text-sm text-gray-900 border border-gray-300 rounded-lg cursor-pointer bg-gray-50 dark:text-gray-400 focus:outline-none dark:bg-gray-700 dark:border-gray-600 dark:placeholder-gray-400"
+  id="file_input"
+  type="file"
+/> -->

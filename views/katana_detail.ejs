@@ -12,13 +12,26 @@
       rel="stylesheet"
     />
   </head>
-  <body class="flex flex-col gap-10">
+  <body class="">
     <nav
       class="bg-black text-white text-[3rem] p-3 font-satisfy text-center w-screen"
     >
       <div><a href="/">Katana Kaji</a></div>
     </nav>
-    <main>
+    <main class="">
+      <div
+        id="links"
+        class="w-[90vw] md:w-[85vw] xl:w-[75vw] mt-3 border-b border-black pb-1 m-auto"
+      >
+        <a href="#" class="">Category</a>
+        <span>/</span>
+        <a
+          href="<%= katana.category.url%>"
+          class="self-start w-screen text-blue-700"
+          ><%= katana.category.name %></a
+        >
+      </div>
+
       <div
         class="flex flex-col md:flex-row items-center md:items-start justify-center md:w-[70vw] m-auto gap-10 mb-20 font-inter"
       >
@@ -26,16 +39,15 @@
           <img
             src="<%= katana.imageUrl %>"
             alt="katana"
-            class="max-w-[90vw] md:max-w-[30rem] lg:max-w-[40rem] rounded-xl shadow-2xl"
+            class="max-w-[90vw] md:max-w-[22rem] lg:max-w-[35rem] xl:max-w-[40rem] rounded-xl shadow-2xl mt-3"
           />
         </div>
         <div id="info" class="px-9">
           <div
-            class="w-[80vw] md:w-[30vw] flex flex-col mt-5 gap-10 border-b-2 border-black pb-8"
+            class="w-[80vw] md:w-[30vw] flex flex-col mt-5 gap-10 border-b border-black pb-8"
           >
             <p class="text-2xl"><%= katana.name %></p>
             <p class="text-xl">$<%= katana.price %>.00 USD</p>
-            <a href="<%= katana.category.url %>">asd</a>
           </div>
           <div id="desc" class="max-w-[25rem] mt-9">
             <p class="mb-4 text-3xl">Description</p>
@@ -45,11 +57,28 @@
               ><%= katana.inStock %></span
             >
           </div>
+
           <button
             class="px-12 py-3 mt-12 text-xl border-2 border-black hover:bg-zinc-300"
           >
             Purchase
           </button>
+          <div id="buttons" class="flex gap-3">
+            <form action="<%= katana.url %>/update" method="get">
+              <button
+                class="py-3 mt-12 text-xl border-2 border-yellow-400 px-9 hover:bg-zinc-300"
+              >
+                Update
+              </button>
+            </form>
+            <form action="<%= katana.url %>/delete" method="post">
+              <button
+                class="py-3 mt-12 text-xl border-2 border-red-600 px-9 hover:bg-zinc-300"
+              >
+                Delete
+              </button>
+            </form>
+          </div>
         </div>
       </div>
     </main>

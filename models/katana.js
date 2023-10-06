@@ -5,8 +5,6 @@ const KatanaSchema = new Schema({
   name: { type: String, required: true },
   imageUrl: {
     type: String,
-    default:
-      "https://tozandoshop.com/cdn/shop/products/1_000000005587_840x.jpg?v=1648192654",
   },
   description: { type: String, required: true },
   price: { type: Number, required: true },

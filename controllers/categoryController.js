@@ -1,11 +1,10 @@
 const express = require("express");
 const Category = require("../models/category");
+const asyncHandler = require("express-async-handler");
+const katana = require("../models/katana");
 
-exports.categoryList = async (req, res, next) => {
-  try {
-    res.render("category");
-    const categories = await Category.find().exec();
-  } catch (error) {
-    console.log(error);
-  }
-};
+exports.categoryList = asyncHandler(async (req, res, next) => {
+  const categories = await Category.findOne({ name: req.params.name }).exec();
+  const type = await katana.find({ category: categories });
+  res.render("category_item", { katanas: type });
+});
