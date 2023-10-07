@@ -1,0 +1,120 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Katana Inventory</title>
+    <link rel="stylesheet" href="/stylesheets/style.css" />
+    <link rel="preconnect" href="https://fonts.googleapis.com" />
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+    <link
+      href="https://fonts.googleapis.com/css2?family=Satisfy&display=swap"
+      rel="stylesheet"
+    />
+  </head>
+  <body>
+    <nav class="bg-black text-white text-[3rem] p-3 font-satisfy text-center">
+      <div><a href="/">Katana Kaji</a></div>
+    </nav>
+    <main>
+      <form
+        action=""
+        method="post"
+        class="w-[100vw] gap-3 md:w-[60vw] md:bg-gray-100 m-auto mb-3 md:rounded-xl md:shadow-2xl p-6 md:mt-6 md:mb-12 font-inter flex flex-col justify-center items-center"
+      >
+        <div id="name" class="">
+          <label for="name" class="block mb-3 text-xl"
+            >Name of the Katana:</label
+          >
+          <input
+            value="<%= katana.name %>"
+            type="text"
+            name="name"
+            placeholder="Eg: JAPANESE HOKKAIDO OAK BOKUTO "
+            class="w-[90vw] md:w-[55vw] h-10 pl-6 border border-black rounded-lg focus:border-blue-500"
+            required
+          />
+        </div>
+        <div id="desc" class="">
+          <label for="name" class="block mb-3 text-xl">Description:</label>
+          <textarea
+            name="description"
+            id="description"
+            cols="30"
+            rows="5"
+            required
+            class="w-[90vw] md:w-[55vw] border border-black rounded-lg p-3"
+            placeholder="Eg: Not only is it robust, durable, and water-resistant, but the beauty and elegance of the oak, which is neither too heavy nor too light, makes it the ideal wood for wooden swords for kendo and other martial arts, swinging, and kata practice."
+          >
+<%= katana.description %></textarea
+          >
+        </div>
+        <div id="image" class="">
+          <label for="name" class="block mb-3 text-xl">Image URL:</label>
+          <input
+            value="<%= katana.imageUrl %>"
+            type="text"
+            name="image"
+            placeholder="URL"
+            disabled
+            class="h-10 border border-black rounded-lg w-[90vw] md:w-[55vw] pl-6 cursor-not-allowed text-zinc-400"
+          />
+        </div>
+        <div class="flex gap-2">
+          <div class="">
+            <label for="category" class="items-start block mb-2 text-xl"
+              >Category</label
+            >
+            <select
+              name="category"
+              id="category"
+              class="p-3 w-[45vw] md:w-[27vw] border border-gray-500 rounded-lg focus:ring-blue-500 focus:border-blue-500"
+            >
+              <% categories.forEach(category => { %>
+              <option value="<%= category.name %>" <% if(katana.category.name == category.name){%>selected<%}%>><%= category.name %>
+              </option>
+              <% }) %>
+            </select>
+          </div>
+          <div class="">
+            <label for="stock" class="items-start block mb-2 text-xl"
+              >In-Stock</label
+            >
+            <select
+              name="stock"
+              id="stock"
+              class="p-3 w-[45vw] md:w-[27vw] border border-gray-500 rounded-lg focus:ring-blue-500 focus:border-blue-500"
+            >
+            <% for (let i = 0; i <= 10; i++) {%>
+            <option value="<%= i %>" <% if (katana.inStock == i){%> selected<%}%>><%= i %></option>
+            <% } %>
+            </select>
+          </div>
+        </div>
+        <div id="price " class="">
+          <label for="price" class="block mb-3 text-xl">Price:</label>
+          <input
+          value="<%= katana.price %>"
+            type="number"
+            name="price"
+            placeholder="Eg: 669"
+            class="w-[90vw] md:w-[55vw] h-10 pl-6 border border-black rounded-lg"
+            required
+          />
+        </div>
+        <button
+          type="submit"
+          class="block text-white bg-black border-white rounded-xl w-[90vw] md:w-[55vw] px-6 py-3 mt-6"
+        >
+          Submit
+        </button>
+      </form>
+    </main>
+  </body>
+</html>
+
+<!-- <input
+  class="w-[27vw] p-3 text-sm text-gray-900 border border-gray-300 rounded-lg cursor-pointer bg-gray-50 dark:text-gray-400 focus:outline-none dark:bg-gray-700 dark:border-gray-600 dark:placeholder-gray-400"
+  id="file_input"
+  type="file"
+/> -->

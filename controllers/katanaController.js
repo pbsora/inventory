@@ -64,3 +64,33 @@ exports.katana_delete_post = asyncHandler(async (req, res) => {
   await Katana.findByIdAndDelete(req.params.id);
   res.redirect("/");
 });
+
+exports.katana_update_get = asyncHandler(async (req, res) => {
+  const [katana, categories] = await Promise.all([
+    await Katana.findById(req.params.id).populate("category").exec(),
+    await Category.find(),
+  ]);
+  console.log(katana.inStock);
+  res.render("katana_edit", { katana: katana, categories: categories });
+});
+
+exports.katana_update_post = asyncHandler(async (req, res) => {
+  const category = await Category.findOne({ name: req.body.category }).exec();
+  await Katana.findByIdAndUpdate(
+    req.params.id,
+    {
+      $set: { name: req.body.name },
+    },
+    { $set: { description: req.body.description } },
+    {
+      $set: { price: req.body.price },
+    }
+    /* {
+      $set: { inStock: req.body.stock },
+    },
+    {
+      $set: { category: req.body.category },
+    } */
+  );
+  res.redirect("/katana/" + req.params.id);
+});

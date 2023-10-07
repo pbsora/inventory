@@ -3,7 +3,8 @@
   "version": "0.0.0",
   "private": true,
   "scripts": {
-    "dev": "nodemon ./bin/www"
+    "start": "nodemon ./bin/www",
+    "dev" : "tailwindcss -i ./style.css -o ./public/stylesheets/style.css --watch"
   },
   "dependencies": {
     "@tailwindcss/line-clamp": "^0.4.4",
