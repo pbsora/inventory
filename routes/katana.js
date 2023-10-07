@@ -10,6 +10,8 @@ router.post("/new", katana_controller.katana_new_post);
 
 router.get("/:id", katana_controller.katana_detail);
 
+router.get("/:id/delete", katana_controller.katana_delete_get);
+
 router.post("/:id/delete", katana_controller.katana_delete_post);
 
 router.get("/:id/edit", katana_controller.katana_update_get);
